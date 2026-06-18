@@ -81,6 +81,18 @@ class Up(BinaryAtomic):
         return arg1.get_geom_state()["pos"][2] >= 1.0
 
 
+class PickedUp(UnaryAtomic):
+    def __call__(self, arg1):
+        if arg1.get_geom_state()["pos"][2] < 0.08:
+            return False
+        obj = arg1.env.get_object(arg1.object_name)
+        for robot in getattr(arg1.env, "robots", []):
+            gripper = getattr(robot, "gripper", None)
+            if gripper is not None and arg1.env.check_contact(gripper, obj):
+                return True
+        return False
+
+
 class Stack(BinaryAtomic):
     def __call__(self, arg1, arg2):
         return (

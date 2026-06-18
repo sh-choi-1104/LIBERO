@@ -56,6 +56,7 @@ def grab_language_from_filename(x):
 libero_suites = [
     "libero_spatial",
     "libero_object",
+    "custom_libero_pickup",
     "libero_goal",
     "libero_90",
     "libero_10",
@@ -114,7 +115,7 @@ class Benchmark(abc.ABC):
 
     def _make_benchmark(self):
         tasks = list(task_maps[self.name].values())
-        if self.name == "libero_90":
+        if self.name == "libero_90" or len(tasks) != 10:
             self.tasks = tasks
         else:
             print(f"[info] using task orders {task_orders[self.task_order_index]}")
@@ -181,6 +182,15 @@ class LIBERO_OBJECT(Benchmark):
     def __init__(self, task_order_index=0):
         super().__init__(task_order_index=task_order_index)
         self.name = "libero_object"
+        self._make_benchmark()
+
+
+@register_benchmark
+class CUSTOM_LIBERO_PICKUP(Benchmark):
+    def __init__(self, task_order_index=0):
+        super().__init__(task_order_index=task_order_index)
+        assert task_order_index == 0, "[error] custom_libero_pickup has a fixed 7-task order"
+        self.name = "custom_libero_pickup"
         self._make_benchmark()
 
 

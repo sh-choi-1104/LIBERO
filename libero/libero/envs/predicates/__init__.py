@@ -8,6 +8,7 @@ VALIDATE_PREDICATE_FN_DICT = {
     # "incontact": InContactPredicateFn(),
     "on": On(),
     "up": Up(),
+    "pickedup": PickedUp(),
     # "stack":     Stack(),
     # "temporal":  TemporalPredicate(),
     "printjointstate": PrintJointState(),
