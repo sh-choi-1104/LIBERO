@@ -36,6 +36,9 @@ libero_task_map = {
         "pick_up_the_glazed_rim_porcelain_ramekin",
         "pick_up_the_plate",
         "pick_up_the_chefmate_8_frypan",
+        "pick_up_the_cookies",
+        "pick_up_the_popcorn",
+        "pick_up_the_new_salad_dressing",
     ],
     "libero_goal": [
         "open_the_middle_drawer_of_the_cabinet",
